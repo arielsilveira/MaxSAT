@@ -2,6 +2,7 @@ package src
 
 import (
 	"bufio"
+	"errors"
 	"fmt"
 	"log"
 	"os"
@@ -66,6 +67,15 @@ func AskOption(question string, options []interface{}) (answer int) {
 		}
 	}
 	return answer
+}
+
+func CheckArgs(args []string) (arg []string, err error) {
+
+	if len(args) < 2 {
+		return arg, errors.New("You need to pass the file name")
+	}
+
+	return args, err
 }
 
 func stringToInt(s string) int {
